@@ -112,7 +112,7 @@ router.post("/", createdMovieController);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Movie'
+ *               $ref: '#/components/schemas/Movie2'
  *       400:
  *         description: Bad Request. Invalid data provided.
  *       404:
