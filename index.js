@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import "dotenv/config";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
+import pathToSwaggerUi from "swagger-ui-dist";
 
 import { connectDB } from "./src/database/db.js";
 import { routerUser, routerMovie } from "./src/routes/index.js";
@@ -20,6 +21,8 @@ connectDB();
 app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+app.use(express.static(pathToSwaggerUi.absolutePath()));
 
 const options = {
   definition: {

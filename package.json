@@ -23,6 +23,7 @@
     "mongoose": "^7.4.3",
     "nodemailer": "^6.9.4",
     "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-dist": "^5.4.2",
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
