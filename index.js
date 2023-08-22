@@ -44,7 +44,11 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, { customCssUrl: CSS_URL })
+);
 
 app.use("/api/users", routerUser);
 app.use("/api/movie", routerMovie);
