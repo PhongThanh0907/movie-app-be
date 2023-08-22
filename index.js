@@ -26,7 +26,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3333/api/",
+        url: "https://movie-app-be.vercel.app/",
         description: "Movie API Documentation",
       },
     ],
@@ -36,11 +36,7 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(specs, { customCssUrl: CSS_URL })
-);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(cors());
 app.use(bodyParser.json());
