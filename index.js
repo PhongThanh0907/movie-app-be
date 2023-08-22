@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import "dotenv/config";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
-import bodyParser from "body-parser";
-import "dotenv/config";
 
 import { connectDB } from "./src/database/db.js";
 import { routerUser, routerMovie } from "./src/routes/index.js";
@@ -15,6 +16,10 @@ const CSS_URL =
   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
 connectDB();
+
+app.use(cors());
+app.use(cookieParser());
+app.use(bodyParser.json());
 
 const options = {
   definition: {
@@ -37,9 +42,6 @@ const options = {
 const specs = swaggerJsdoc(options);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-
-app.use(cors());
-app.use(bodyParser.json());
 
 app.use("/api/users", routerUser);
 app.use("/api/movie", routerMovie);
